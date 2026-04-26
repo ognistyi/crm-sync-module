@@ -12,7 +12,7 @@ use yii\db\ActiveRecord;
 
 class Importer
 {
-    public function __construct(private readonly SyncModule $module)
+    public function __construct(private SyncModule $module)
     {
     }
 

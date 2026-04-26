@@ -16,11 +16,11 @@ class RabbitMqTransport implements SyncTransportInterface
     private ?AMQPChannel $channel = null;
 
     public function __construct(
-        private readonly string $host,
-        private readonly int $port,
-        private readonly string $user,
-        private readonly string $password,
-        private readonly string $vhost = '/',
+        private string $host,
+        private int $port,
+        private string $user,
+        private string $password,
+        private string $vhost = '/',
     ) {
     }
 

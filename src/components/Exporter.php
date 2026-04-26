@@ -12,9 +12,9 @@ use yii\db\ActiveRecord;
 class Exporter
 {
     public function __construct(
-        private readonly string $source,
-        private readonly string $queue,
-        private readonly SyncTransportInterface $transport,
+        private string $source,
+        private string $queue,
+        private SyncTransportInterface $transport,
     ) {
     }
 

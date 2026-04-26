@@ -16,7 +16,7 @@ use yii\base\InvalidConfigException;
  */
 class AckProcessor
 {
-    public function __construct(private readonly SyncModule $module)
+    public function __construct(private SyncModule $module)
     {
     }
 
