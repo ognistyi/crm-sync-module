@@ -11,6 +11,7 @@ use ognistyi\sync\components\Importer;
 use ognistyi\sync\contracts\RbacSyncHandlerInterface;
 use ognistyi\sync\SyncModule;
 use Ramsey\Uuid\Uuid;
+use yii\base\InvalidConfigException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
@@ -151,11 +152,12 @@ class SyncController extends Controller
 
     private function module(): SyncModule
     {
-        if ($this->module instanceof SyncModule) {
-            return $this->module;
+        if (!$this->module instanceof SyncModule) {
+            throw new InvalidConfigException(
+                'SyncController must be loaded via SyncModule. Register it under "modules", not "controllerMap".'
+            );
         }
-        /** @var SyncModule $module */
-        $module = \Yii::$app->getModule('sync');
-        return $module;
+
+        return $this->module;
     }
 }
