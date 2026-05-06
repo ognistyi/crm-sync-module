@@ -71,6 +71,12 @@ class SyncController extends Controller
             $ok = count(array_filter($results, static fn(array $r): bool => $r['status'] === 'ok'));
             $err = count($results) - $ok;
             Console::output("{$entity}: {$ok} ok, {$err} errors");
+
+            foreach ($results as $result) {
+                if ($result['status'] !== 'ok') {
+                    Console::output("  ERR [{$result['crm_id']}]: " . ($result['error'] ?? 'unknown'));
+                }
+            }
         });
 
         return ExitCode::OK;
